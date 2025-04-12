@@ -129,35 +129,42 @@
     © 2025 B.I.P Scan | Developed by Bengal Tiger Web Development
   </footer>
 
-  <script>
-    const products = [
-      { barcode: "729", country: "Israel" },
-      { barcode: "890", country: "India" },
-      { barcode: "628", country: "UAE" },
-      { barcode: "690", country: "China" }
-    ];
+<script>
+  const products = [
+    { barcode: "729", country: "Israel" },
+    { barcode: "890", country: "India" },
+    { barcode: "628", country: "UAE" },
+    { barcode: "690", country: "China" }
+  ];
 
-    function onScanSuccess(decodedText) {
-      const resultDiv = document.getElementById('result');
-      const match = products.find(p => decodedText.startsWith(p.barcode));
+  function onScanSuccess(decodedText, decodedResult) {
+    const resultDiv = document.getElementById('result');
+    const match = products.find(p => decodedText.startsWith(p.barcode));
 
-      if (match) {
-        if (match.country.toLowerCase() === 'israel') {
-          resultDiv.className = 'israel';
-          resultDiv.innerHTML = "⚠️ এটি একটি ইসরায়েলি পণ্য (বয়কট করুন)!";
-        } else {
-          resultDiv.className = 'not-israel';
-          resultDiv.innerHTML = `✅ এটি ইসরায়েলি পণ্য নয় (${match.country})`;
-        }
+    if (match) {
+      if (match.country.toLowerCase() === 'israel') {
+        resultDiv.className = 'israel';
+        resultDiv.innerHTML = "⚠️ এটি একটি ইসরায়েলি পণ্য (বয়কট করুন)!";
       } else {
-        resultDiv.className = 'unknown';
-        resultDiv.innerHTML = "❓ প্রোডাক্টের উৎস খুঁজে পাওয়া যায়নি।";
+        resultDiv.className = 'not-israel';
+        resultDiv.innerHTML = `✅ এটি ইসরায়েলি পণ্য নয় (${match.country})`;
       }
+    } else {
+      resultDiv.className = 'unknown';
+      resultDiv.innerHTML = "❓ প্রোডাক্টের উৎস খুঁজে পাওয়া যায়নি।";
     }
 
-    const scanner = new Html5QrcodeScanner("reader", { fps: 10, qrbox: 250 });
-    scanner.render(onScanSuccess);
-  </script>
+    // ক্যামেরা বন্ধ করে দেওয়া হবে
+    html5QrcodeScanner.clear().then(() => {
+      console.log("Camera stopped after scan.");
+    }).catch(error => {
+      console.error("Failed to stop camera", error);
+    });
+  }
+
+  const html5QrcodeScanner = new Html5QrcodeScanner("reader", { fps: 10, qrbox: 250 });
+  html5QrcodeScanner.render(onScanSuccess);
+</script>
 
 </body>
 </html>
