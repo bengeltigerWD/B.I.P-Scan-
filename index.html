@@ -129,31 +129,19 @@
     © 2025 B.I.P Scan | Developed by Bengal Tiger Web Development
   </footer>
 
-<!-- QuaggaJS লাইব্রেরি যোগ করুন -->
-<script src="https://unpkg.com/quagga@0.12.1/dist/quagga.min.js"></script>
+<div id="reader" style="width: 500px; height: 500px;"></div>
+<div id="result"></div>
 
+<script src="https://unpkg.com/html5-qrcode/minified/html5-qrcode.min.js"></script>
 <script>
-  // Quagga ইনিশিয়ালাইজ করুন
-  Quagga.init({
-    inputStream: {
-      name: "Live",
-      type: "LiveStream",
-      target: document.querySelector('#reader') // স্ক্যানিং এলাকা
-    },
-    decoder: {
-      readers: ["code_128_reader", "ean_reader", "ean_8_reader", "upc_reader", "code_39_reader"] // বারকোড পাঠকদের তালিকা
-    }
-  }, function(err) {
-    if (err) {
-      console.error(err);
-      return;
-    }
-    Quagga.start(); // স্ক্যানিং শুরু করুন
-  });
+  const products = [
+    { barcode: "729", country: "Israel" },
+    { barcode: "890", country: "India" },
+    { barcode: "628", country: "UAE" },
+    { barcode: "690", country: "China" }
+  ];
 
-  // বারকোড স্ক্যান হওয়ার পর callback ফাংশন
-  Quagga.onDetected(function(result) {
-    const decodedText = result.codeResult.code;
+  function onScanSuccess(decodedText, decodedResult) {
     const resultDiv = document.getElementById('result');
     const match = products.find(p => decodedText.startsWith(p.barcode));
 
@@ -169,11 +157,23 @@
       resultDiv.className = 'unknown';
       resultDiv.innerHTML = "❓ প্রোডাক্টের উৎস খুঁজে পাওয়া যায়নি।";
     }
-  });
-</script>
 
-<div id="reader" style="width: 500px; height: 500px;"></div>
-<div id="result"></div>
+    // ক্যামেরা বন্ধ করে দেওয়া হবে
+    html5QrcodeScanner.clear().then(() => {
+      console.log("Camera stopped after scan.");
+    }).catch(error => {
+      console.error("Failed to stop camera", error);
+    });
+  }
+
+  const html5QrcodeScanner = new Html5QrcodeScanner("reader", {
+    fps: 10,
+    qrbox: 250,
+    aspectRatio: 1.0
+  });
+
+  html5QrcodeScanner.render(onScanSuccess);
+</script>
 
 
 </body>
