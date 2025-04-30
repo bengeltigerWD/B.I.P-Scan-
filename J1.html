@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ঝিনাইদহ সেবা | আপনার ডিজিটাল সিটি গাইড</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4cc9f0;
+            --warning: #f72585;
+            --text: #2b2d42;
+            --text-light: #8d99ae;
+            --white: #ffffff;
+            --gradient: linear-gradient(135deg, #4361ee 0%, #3f37c9 100%);
+            --shadow: 0 10px 20px rgba(0,0,0,0.1);
+            --radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Modern Header with Glass Morphism */
+        header {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Modern Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav ul li a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover::after {
+            width: 60%;
+        }
+
+        .nav-btns {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.6rem 1.5rem;
+            border-radius: var(--radius);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(67, 97, 238, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        /* Hero Section with Animated Gradient */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            padding: 6rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(-45deg, #4361ee, #3f37c9, #4895ef, #4cc9f0);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            z-index: -1;
+            opacity: 0.9;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            opacity: 0.9;
+        }
+
+        /* Modern Search Bar */
+        .search-container {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-bar {
+            display: flex;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 1.2rem 1.5rem;
+            border: none;
+            background: rgba(255,255,255,0.8);
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .search-bar button {
+            padding: 0 2rem;
+            background: var(--white);
+            color: var(--primary);
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .search-bar button:hover {
+            background: var(--light);
+        }
+
+        .search-categories {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .search-category {
+            background: rgba(255,255,255,0.2);
+            color: var(--white);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .search-category:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        /* Services Section */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Modern Card Design */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--warning);
+            color: var(--white);
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 1;
+        }
+
+        .card-img {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .service-card:hover .card-img img {
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card-category {
+            color: var(--primary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .card-description {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .card-rating {
+            color: #ffc107;
+            font-size: 0.9rem;
+        }
+
+        .card-rating i {
+            margin-right: 0.2rem;
+        }
+
+        /* Featured Doctors Section */
+        .doctors-slider {
+            position: relative;
+            margin: 3rem 0;
+        }
+
+        .doctor-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+            padding: 2rem 1.5rem;
+            margin: 0 1rem;
+        }
+
+        .doctor-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 1.5rem;
+            border: 5px solid rgba(67, 97, 238, 0.1);
+        }
+
+        .doctor-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .doctor-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .doctor-specialty {
+            color: var(--primary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .doctor-contact {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Modern Tabs */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tab-btn {
+            padding: 0.6rem 1.5rem;
+            background: transparent;
+            border: none;
+            border-radius: 50px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--text-light);
+        }
+
+        .tab-btn.active {
+            background: var(--primary);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+        }
+
+        /* App Download Section */
+        .app-download {
+            background: var(--gradient);
+            color: var(--white);
+            border-radius: var(--radius);
+            padding: 4rem 2rem;
+            text-align: center;
+            margin: 5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-download::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+
+        .app-download::after {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            left: -80px;
+            width: 250px;
+            height: 250px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+
+        .app-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .app-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .app-btn {
+            background: var(--white);
+            color: var(--primary);
+            padding: 0.8rem 1.8rem;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .app-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .app-btn i {
+            font-size: 1.5rem;
+        }
+
+        .btn-text small {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 400;
+            opacity: 0.8;
+        }
+
+        .btn-text span {
+            font-size: 1.1rem;
+        }
+
+        /* Modern Footer */
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 5rem 2rem 2rem;
+            position: relative;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-col h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        .footer-col p {
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            opacity: 0.8;
+            text-decoration: none;
+            transition: var(--transition);
+            display: block;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            padding-left: 5px;
+            color: var(--accent);
+        }
+
+        .footer-contact li {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+
+        .footer-contact i {
+            color: var(--accent);
+            font-size: 1.1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: var(--white);
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 3rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        /* Floating Action Button */
+        .fab {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 20px rgba(67, 97, 238, 0.4);
+            cursor: pointer;
+            z-index: 100;
+            transition: var(--transition);
+        }
+
+        .fab:hover {
+            transform: translateY(-5px) scale(1.05);
+            background: var(--secondary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                gap: 0.5rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero {
+                padding: 8rem 1rem 4rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .search-bar input {
+                padding: 1rem;
+            }
+
+            .search-bar button {
+                padding: 0 1.5rem;
+            }
+
+            .section {
+                padding: 3rem 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .nav-btns {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.85rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .search-bar {
+                flex-direction: column;
+                background: transparent;
+            }
+
+            .search-bar input {
+                border-radius: var(--radius);
+                margin-bottom: 0.5rem;
+            }
+
+            .search-bar button {
+                border-radius: var(--radius);
+                padding: 1rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .app-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .app-btn {
+                width: 100%;
+                max-width: 250px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header>
+        <div class="logo">
+            <img src="blogo.png" alt="ঝিনাইদহ সেবা লোগো">
+            <span class="logo-text">ঝিনাইদহ সেবা</span>
+        </div>
+        
+        <nav>
+            <ul>
+                <li><a href="#home">হোম</a></li>
+                <li><a href="#services">সেবাসমূহ</a></li>
+                <li><a href="#doctors">ডাক্তার</a></li>
+                <li><a href="#shops">দোকান</a></li>
+                <li><a href="#about">আমাদের সম্পর্কে</a></li>
+                <li><a href="#contact">যোগাযোগ</a></li>
+            </ul>
+        </nav>
+        
+        <div class="nav-btns">
+            <button class="btn btn-outline">লগইন</button>
+            <button class="btn btn-primary">রেজিস্টার</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>ঝিনাইদহের সকল সেবা এখন আপনার হাতের মুঠোয়</h1>
+            <p>ডাক্তার, দোকানপাট, পরিবহন থেকে শুরু করে সকল স্থানীয় সেবা খুঁজে নিন সহজেই</p>
+            
+            <div class="search-container">
+                <div class="search-bar">
+                    <input type="text" placeholder="আপনি কী খুঁজছেন? (ডাক্তার, ফার্মেসি, দোকান...)">
+                    <button type="submit"><i class="fas fa-search"></i> খুঁজুন</button>
+                </div>
+                
+                <div class="search-categories">
+                    <span class="search-category">ডাক্তার</span>
+                    <span class="search-category">ফার্মেসি</span>
+                    <span class="search-category">সুপার শপ</span>
+                    <span class="search-category">ইলেকট্রিশিয়ান</span>
+                    <span class="search-category">পরিবহন</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section" id="services">
+        <div class="section-header">
+            <h2 class="section-title">জনপ্রিয় সেবাসমূহ</h2>
+            <p class="section-subtitle">ঝিনাইদহের সেরা সেবা প্রদানকারীদের সাথে পরিচিত হোন</p>
+        </div>
+        
+        <div class="tabs">
+            <button class="tab-btn active">সব সেবা</button>
+            <button class="tab-btn">চিকিৎসা</button>
+            <button class="tab-btn">খাদ্য</button>
+            <button class="tab-btn">শিক্ষা</button>
+            <button class="tab-btn">পরিবহন</button>
+            <button class="tab-btn">অন্যান্য</button>
+        </div>
+        
+        <div class="services-grid">
+            <!-- Service Card 1 -->
+            <div class="service-card">
+                <div class="card-badge">প্রিমিয়াম</div>
+                <div class="card-img">
+                    <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="ডাক্তার সেবা">
+                </div>
+                <div class="card-content">
+                    <span class="card-category">চিকিৎসা</span>
+                    <h3 class="card-title">জেনারেল ফিজিশিয়ান</h3>
+                    <p class="card-description">ঝিনাইদহ সদর হাসপাতালের অভিজ্ঞ ডাক্তারদের তালিকা ও এপয়েন্টমেন্ট সিস্টেম</p>
+                    <div class="card-footer">
+                        <div class="card-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>(৪২ রিভিউ)</span>
+                        </div>
+                        <button class="btn btn-primary" style="padding: 0.4rem 0.8rem;">বিস্তারিত</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Service Card 2 -->
+            <div class="service-card">
+                <div class="card-img">
+                    <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="ফার্মেসি">
+                </div>
+                <div class="card-content">
+                    <span class="card-category">চিকিৎসা</span>
+                    <h3 class="card-title">স্থানীয় ফার্মেসি</h3>
+                    <p class="card-description">ঝিনাইদহের ২৪ ঘণ্টা খোলা ফার্মেসি ও ওষুধের দোকানের ঠিকানা ও কন্টাক্ট</p>
+                    <div class="card-footer">
+                        <div class="card-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>(৩৮ রিভিউ)</span>
+                        </div>
+                        <button class="btn btn-primary" style="padding: 0.4rem 0.8rem;">বিস্তারিত</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Service Card 3 -->
+            <div class="service-card">
+                <div class="card-badge">নতুন</div>
+                <div class="card-img">
+                    <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="কাচারী পণ্য">
+                </div>
+                <div class="card-content">
+                    <span class="card-category">খাদ্য</span>
+                    <h3 class="card-title">কাচারী পণ্যের দোকান</h3>
+                    <p class="card-description">স্থানীয় তাজা শাকসবজি ও দৈনন্দিন পণ্যের দোকানের তালিকা ও ডেলিভারি সেবা</p>
+                    <div class="card-footer">
+                        <div class="card-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(৫৬ রিভিউ)</span>
+                        </div>
+                        <button class="btn btn-primary" style="padding: 0.4rem 0.8rem;">বিস্তারিত</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Doctors Section -->
+    <section class="section" id="doctors">
+        <div class="section-header">
+            <h2 class="section-title">ঝিনাইদহের সেরা ডাক্তারবৃন্দ</h2>
+            <p class="section-subtitle">আপনার প্রয়োজন অনুযায়ী বিশেষজ্ঞ ডাক্তার খুঁজে নিন</p>
+        </div>
+        
+        <div class="services-grid">
+            <!-- Doctor Card 1 -->
+            <div class="service-card">
+                <div class="card-img">
+                    <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="ডাক্তার">
+                </div>
+                <div class="card-content">
+                    <span class="card-category">কার্ডিওলজিস্ট</span>
+                    <h3 class="card-title">ডা. আহমেদ হোসেন</h3>
+                    <p class="card-description">ঝিনাইদহ মেডিকেল কলেজ হাসপাতাল, ১৫ বছর অভিজ্ঞতা, এমবিবিএস, এফসিপিএস (কার্ডিওলজি)</p>
+                    <div class="card-footer">
+                        <div class="card-rating">
+                            <i class="fas fa-phone-alt"></i> ০১৭১২৩৪৫৬৭৮
+                        </div>
+                        <button class="btn btn-primary" style="padding: 0.4rem 0.8rem;">এপয়েন্টমেন্ট</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Doctor Card 2 -->
+            <div class="service-card">
+                <div class="card-img">
+                    <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="ডাক্তার">
+                </div>
+                <div class="card-content">
+                    <span class="card-category">শিশু বিশেষজ্ঞ</span>
+                    <h3 class="card-title">ডা. সুমাইয়া আক্তার</h3>
+                    <p class="card-description">ঝিনাইদহ সদর হাসপাতাল, ১০ বছর অভিজ্ঞতা, এমবিবিএস, এমডি (পেডিয়াট্রিক্স)</p>
+                    <div class="card-footer">
+                        <div class="card-rating">
+                            <i class="fas fa-phone-alt"></i> ০১৯৮৭৬৫৪৩২১
+                        </div>
+                        <button class="btn btn-primary" style="padding: 0.4rem 0.8rem;">এপয়েন্টমেন্ট</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Doctor Card 3 -->
+            <div class="service-card">
+                <div class="card-img">
+                    <img src="https://images.unsplash.com/photo-1591608971362-f08b2a75731a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="ডাক্তার">
+                </div>
+                <div class="card-content">
+                    <span class="card-category">গাইনোকলজিস্ট</span>
+                    <h3 class="card-title">ডা. নাসরিন জাহান</h3>
+                    <p class="card-description">ঝিনাইদহ সদর হাসপাতাল, ১২ বছর অভিজ্ঞতা, এমবিবিএস, এফসিপিএস (গাইনোকলজি)</p>
+                    <div class="card-footer">
+                        <div class="card-rating">
+                            <i class="fas fa-phone-alt"></i> ০১৫২১১১২২৩৩
+                        </div>
+                        <button class="btn btn-primary" style="padding: 0.4rem 0.8rem;">এপয়েন্টমেন্ট</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shops Section -->
+    <section class="section" id="shops">
+        <div class="section-header">
+            <h2 class="section-title">ঝিনাইদহের দোকান-পাট</h2>
+            <p class="section-subtitle">স্থানীয় ব্যবসায়ীদের সাথে পরিচিত হোন এবং আপনার প্রয়োজনীয় পণ্য খুঁজে নিন</p>
+        </div>
+        
+        <div class="services-grid">
+            <!-- Shop Card 1 -->
+            <div class="service-card">
+                <div class="card-badge">২৪/৭ খোলা</div>
+                <div class="card-img">
+                    <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="সুপার শপ">
+                </div>
+                <div class="card-content">
+                    <span class="card-category">সুপার শপ</span>
+                    <h3 class="card-title">আগামী সুপার শপ</h3>
+                    <p class="card-description">ঝিনাইদহ সদরের বৃহত্তম সুপার শপ, সকল ধরনের দৈনন্দিন পণ্য এক স্থানে</p>
+                    <div class="card-footer">
+                        <div class="card-rating">
+                            <i class="fas fa-map-marker-alt"></i> সদর রোড, ঝিনাইদহ
+                        </div>
+                        <button class="btn btn-primary" style="padding: 0.4rem 0.8rem;">বিস্তারিত</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Shop Card 2 -->
+            <div class="service-card">
+                <div class="card-img">
+                    <img src="https://images.unsplash.com/photo-1461141346587-763ab02bced9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="ইলেকট্রনিক্স দোকান">
+                </div>
+                <div class="card-content">
+                    <span class="card-category">ইলেকট্রনিক্স</span>
+                    <h3 class="card-title">টেক ভিশন</h3>
+                    <p class="card-description">সকল ধরনের ইলেকট্রনিক্স পণ্য, মোবাইল, ল্যাপটপ ও গ্যাজেটের নির্ভরযোগ্য দোকান</p>
+                    <div class="card-footer">
+                        <div class="card-rating">
+                            <i class="fas fa-map-marker-alt"></i> কোর্ট রোড, ঝিনাইদহ
+                        </div>
+                        <button class="btn btn-primary" style="padding: 0.4rem 0.8rem;">বিস্তারিত</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Shop Card 3 -->
+            <div class="service-card">
+                <div class="card-img">
+                    <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="বইয়ের দোকান">
+                </div>
+                <div class="card-content">
+                    <span class="card-category">শিক্ষা</span>
+                    <h3 class="card-title">জ্ঞানকোষ বইয়ের দোকান</h3>
+                    <p class="card-description">সকল ধরনের শিক্ষা সহায়ক বই, স্কুল-কলেজের বই এবং স্টেশনারি পণ্য</p>
+                    <div class="card-footer">
+                        <div class="card-rating">
+                            <i class="fas fa-map-marker-alt"></i> কলেজ রোড, ঝিনাইদহ
+                        </div>
+                        <button class="btn btn-primary" style="padding: 0.4rem 0.8rem;">বিস্তারিত</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Download Section -->
+    <section class="section">
+        <div class="app-download">
+            <div class="app-content">
+                <h2 style="color: var(--white); margin-bottom: 1.5rem;">ডাউনলোড করুন আমাদের মোবাইল অ্যাপ</h2>
+                <p style="opacity: 0.9; margin-bottom: 1.5rem;">ঝিনাইদহের সকল সেবা এখন আপনার হাতের মুঠোয়। অ্যাপ ডাউনলোড করে সবচেয়ে দ্রুত সেবা পান।</p>
+                
+                <div class="app-buttons">
+                    <a href="#" class="app-btn">
+                        <i class="fab fa-google-play"></i>
+                        <div class="btn-text">
+                            <small>Download on</small>
+                            <span>Google Play</span>
+                        </div>
+                    </a>
+                    
+                    <a href="#" class="app-btn">
+                        <i class="fab fa-apple"></i>
+                        <div class="btn-text">
+                            <small>Download on</small>
+                            <span>App Store</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="section-header">
+            <h2 class="section-title">আমাদের সম্পর্কে</h2>
+            <p class="section-subtitle">ঝিনাইদহ সেবা সম্পর্কে জানুন</p>
+        </div>
+        
+        <div style="background: var(--white); padding: 3rem; border-radius: var(--radius); box-shadow: var(--shadow);">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;">
+                <div>
+                    <h3 style="font-size: 1.8rem; margin-bottom: 1.5rem; color: var(--primary);">ঝিনাইদহের সেবাকে ডিজিটাল করার প্রয়াস</h3>
+                    <p style="margin-bottom: 1rem;">ঝিনাইদহ সেবা একটি সম্পূর্ণ স্থানীয় উদ্যোগ যার লক্ষ্য ঝিনাইদহবাসীর দৈনন্দিন প্রয়োজনীয় সেবাগুলোকে সহজলভ্য করা। আমরা আমাদের ওয়েবসাইটের মাধ্যমে ঝিনাইদহের সকল প্রয়োজনীয় সেবা যেমন চিকিৎসা, শিক্ষা, বাজারজাত পণ্য, পরিবহন এবং অন্যান্য সেবাগুলোকে একই প্ল্যাটফর্মে উপস্থাপন করছি।</p>
+                    <p style="margin-bottom: 1.5rem;">আমাদের টিম স্থানীয় তরুণদের নিয়ে গঠিত যারা ঝিনাইদহের উন্নয়নে কাজ করতে আগ্রহী। আমরা বিশ্বাস করি প্রযুক্তির সঠিক ব্যবহারের মাধ্যমে আমরা আমাদের সমাজের জীবনযাত্রার মান উন্নয়ন করতে পারি।</p>
+                    <button class="btn btn-primary">আরও জানুন</button>
+                </div>
+                
+                <div style="position: relative;">
+                    <div style="width: 100%; height: 350px; background: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80') center/cover; border-radius: var(--radius); box-shadow: var(--shadow);"></div>
+                    <div style="position: absolute; bottom: -20px; right: -20px; width: 150px; height: 150px; background: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80') center/cover; border-radius: var(--radius); box-shadow: var(--shadow); border: 5px solid var(--white);"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>ঝিনাইদহ সেবা</h3>
+                <p>আপনার স্থানীয় সেবা নির্দেশিকা। ঝিনাইদহের সকল প্রয়োজনীয় সেবা একত্রে।</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-col">
+                <h3>লিংক</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">হোম</a></li>
+                    <li><a href="#services">সেবাসমূহ</a></li>
+                    <li><a href="#doctors">ডাক্তার</a></li>
+                    <li><a href="#shops">দোকান-পাট</a></li>
+                    <li><a href="#about">আমাদের সম্পর্কে</a></li>
+                    <li><a href="#contact">যোগাযোগ</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h3>যোগাযোগ</h3>
+                <ul class="footer-contact">
+                    <li><i class="fas fa-map-marker-alt"></i> ১২৩ কলেজ রোড, ঝিনাইদহ</li>
+                    <li><i class="fas fa-phone"></i> ০১৭১১১১২২৩৩</li>
+                    <li><i class="fas fa-envelope"></i> info@jhenaidahseba.com</li>
+                    <li><i class="fas fa-clock"></i> সকাল ৯টা - রাত ১০টা</li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h3>নিউজলেটার</h3>
+                <p>ঝিনাইদহ সেবার সর্বশেষ আপডেট পেতে সাবস্ক্রাইব করুন</p>
+                <div style="display: flex; margin-top: 1.5rem;">
+                    <input type="email" placeholder="আপনার ইমেইল" style="flex: 1; padding: 0.8rem; border: none; border-radius: var(--radius) 0 0 var(--radius); outline: none;">
+                    <button style="background: var(--primary); color: var(--white); border: none; padding: 0 1.5rem; border-radius: 0 var(--radius) var(--radius) 0; cursor: pointer;"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; ২০২৩ ঝিনাইদহ সেবা | সকল অধিকার সংরক্ষিত</p>
+        </div>
+    </footer>
+
+    <!-- Floating Action Button -->
+    <div class="fab">
+        <i class="fas fa-comment-dots"></i>
+    </div>
+
+    <script>
+        // Simple JavaScript for interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab functionality
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Here you would filter content based on tab
+                    console.log('Tab selected:', this.textContent);
+                });
+            });
+            
+            // Search category chips
+            const searchCategories = document.querySelectorAll('.search-category');
+            
+            searchCategories.forEach(category => {
+                category.addEventListener('click', function() {
+                    // Here you would filter search results
+                    console.log('Category selected:', this.textContent);
+                });
+            });
+            
+            // Smooth scrolling for navigation
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // FAB click handler
+            const fab = document.querySelector('.fab');
+            fab.addEventListener('click', function() {
+                alert('চ্যাট সাপোর্ট শীঘ্রই আসছে!');
+            });
+        });
+    </script>
+</body>
+</html>
