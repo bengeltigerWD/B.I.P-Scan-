@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tourism in Jhenaidah | Jhenaidah Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4CAF50; /* Green for tourism */
+            --secondary: #FFC107;
+            --light: #f5f5f5;
+            --dark: #333;
+            --gray: #666;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links li.active a {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1464037866556-6812c9d1c72e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin-top: 70px;
+        }
+        
+        .page-header h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        .breadcrumb li {
+            margin: 0 10px;
+        }
+        
+        .breadcrumb li a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .breadcrumb li::after {
+            content: '/';
+            margin-left: 10px;
+            color: #ccc;
+        }
+        
+        .breadcrumb li:last-child::after {
+            content: '';
+        }
+        
+        /* Tourism Content */
+        .tourism-content {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .attraction-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .attraction-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .attraction-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .attraction-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .attraction-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .attraction-card:hover .attraction-img img {
+            transform: scale(1.1);
+        }
+        
+        .attraction-info {
+            padding: 25px;
+        }
+        
+        .attraction-info h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .attraction-info p {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+        
+        .attraction-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+        
+        .attraction-meta span {
+            display: flex;
+            align-items: center;
+            color: var(--gray);
+            font-size: 14px;
+        }
+        
+        .attraction-meta i {
+            margin-right: 5px;
+            color: var(--primary);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #388E3C;
+        }
+        
+        /* Travel Guide */
+        .travel-guide {
+            background-color: #E8F5E9;
+            padding: 60px 0;
+            border-radius: 10px;
+        }
+        
+        .guide-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .guide-item {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .guide-item h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .guide-item h4 i {
+            margin-right: 10px;
+        }
+        
+        .guide-item p {
+            color: var(--gray);
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-column ul li a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .footer-column ul li i {
+            margin-right: 10px;
+            color: var(--primary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bbb;
+            font-size: 14px;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 40px 0;
+                transition: left 0.3s;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .page-header {
+                margin-top: 60px;
+                height: 250px;
+            }
+            
+            .page-header h1 {
+                font-size: 32px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .page-header h1 {
+                font-size: 28px;
+            }
+            
+            .section-title h2 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">Jhenaidah<span>Hub</span></a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="healthcare.html">Healthcare</a></li>
+                    <li><a href="education.html">Education</a></li>
+                    <li><a href="transportation.html">Transportation</a></li>
+                    <li><a href="shopping.html">Shopping</a></li>
+                    <li><a href="tourism.html" class="active">Tourism</a></li>
+                    <li><a href="utilities.html">Utilities</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div>
+                <h1>Explore Jhenaidah</h1>
+                <ul class="breadcrumb">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">Tourism</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tourism Content -->
+    <section class="tourism-content">
+        <div class="container">
+            <div class="section-title">
+                <h2>Tourist Attractions</h2>
+                <p>Discover the beautiful places to visit in Jhenaidah</p>
+            </div>
+            
+            <div class="attraction-cards">
+                <!-- Attraction 1 -->
+                <div class="attraction-card">
+                    <div class="attraction-img">
+                        <img src="https://images.unsplash.com/photo-1581852057106-0a2b32f6a3ad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Naldanga Temple">
+                    </div>
+                    <div class="attraction-info">
+                        <h3>Naldanga Temple</h3>
+                        <p>Ancient Hindu temple complex with beautiful terracotta artwork dating back to the 17th century.</p>
+                        <div class="attraction-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Naldanga</span>
+                            <span><i class="fas fa-clock"></i> 8AM-6PM</span>
+                            <span><i class="fas fa-ticket-alt"></i> ৳20</span>
+                        </div>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+                
+                <!-- Attraction 2 -->
+                <div class="attraction-card">
+                    <div class="attraction-img">
+                        <img src="https://images.unsplash.com/photo-1470114716159-e389f8712fda?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Shimanta Park">
+                    </div>
+                    <div class="attraction-info">
+                        <h3>Shimanta Park</h3>
+                        <p>Beautiful riverside park perfect for picnics, evening walks and enjoying sunset views.</p>
+                        <div class="attraction-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Jhenaidah Town</span>
+                            <span><i class="fas fa-clock"></i> 6AM-9PM</span>
+                            <span><i class="fas fa-ticket-alt"></i> Free</span>
+                        </div>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+                
+                <!-- Attraction 3 -->
+                <div class="attraction-card">
+                    <div class="attraction-img">
+                        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Nobaratna Eco Park">
+                    </div>
+                    <div class="attraction-info">
+                        <h3>Nobaratna Eco Park</h3>
+                        <p>Ecological park with lush greenery, boating facilities and children's play area.</p>
+                        <div class="attraction-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Kaliganj</span>
+                            <span><i class="fas fa-clock"></i> 9AM-5PM</span>
+                            <span><i class="fas fa-ticket-alt"></i> ৳30</span>
+                        </div>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="travel-guide">
+                <div class="section-title">
+                    <h2>Travel Guide</h2>
+                    <p>Essential information for visitors</p>
+                </div>
+                
+                <div class="guide-items">
+                    <div class="guide-item">
+                        <h4><i class="fas fa-hotel"></i> Accommodation</h4>
+                        <p>Best hotels and guest houses near tourist spots with pricing information.</p>
+                        <p><i class="fas fa-arrow-right"></i> View options</p>
+                    </div>
+                    
+                    <div class="guide-item">
+                        <h4><i class="fas fa-utensils"></i> Local Cuisine</h4>
+                        <p>Must-try traditional foods and recommended restaurants in Jhenaidah.</p>
+                        <p><i class="fas fa-arrow-right"></i> Explore food</p>
+                    </div>
+                    
+                    <div class="guide-item">
+                        <h4><i class="fas fa-calendar-alt"></i> Best Time to Visit</h4>
+                        <p>Seasonal guide with weather information and festival calendar.</p>
+                        <p><i class="fas fa-arrow-right"></i> View calendar</p>
+                    </div>
+                    
+                    <div class="guide-item">
+                        <h4><i class="fas fa-map-marked-alt"></i> Tour Packages</h4>
+                        <p>Customized tour packages for individuals and groups.</p>
+                        <p><i class="fas fa-arrow-right"></i> See packages</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Jhenaidah Hub</h3>
+                    <p>Your one-stop portal for all services and information about Jhenaidah city.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="healthcare.html">Healthcare</a></li>
+                        <li><a href="education.html">Education</a></li>
+                        <li><a href="transportation.html">Transportation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Jhenaidah, Bangladesh</li>
+                        <li><i class="fas fa-phone"></i> +880 XXXX XXXXXX</li>
+                        <li><i class="fas fa-envelope"></i> info@jhenaidahhub.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Jhenaidah Hub. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
