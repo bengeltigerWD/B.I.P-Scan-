@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transportation in Jhenaidah | Jhenaidah Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reuse the same CSS from healthcare.html */
+        /* Only changing specific colors and icons */
+        :root {
+            --primary: #FF9800; /* Changed to orange for transportation */
+            --secondary: #1976D2;
+        }
+        
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://via.placeholder.com/1920x600') no-repeat center center/cover;
+        }
+        
+        .facility-info i {
+            color: var(--primary);
+        }
+        
+        .route-schedule {
+            margin-top: 30px;
+            overflow-x: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">Jhenaidah<span>Hub</span></a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="healthcare.html">Healthcare</a></li>
+                    <li><a href="education.html">Education</a></li>
+                    <li><a href="transportation.html" class="active">Transportation</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div>
+                <h1>Transportation Services</h1>
+                <ul class="breadcrumb">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">Transportation</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Details -->
+    <section class="service-details">
+        <div class="container">
+            <div class="section-title">
+                <h2>Transport Options in Jhenaidah</h2>
+                <p>Find all transportation services available in Jhenaidah</p>
+            </div>
+            
+            <div class="facilities-list">
+                <!-- Bus Service -->
+                <div class="facility-card">
+                    <div class="facility-img">
+                        <img src="https://via.placeholder.com/600x400" alt="Jhenaidah Bus Terminal">
+                    </div>
+                    <div class="facility-content">
+                        <h3>Jhenaidah Bus Terminal</h3>
+                        <div class="facility-info">
+                            <p><i class="fas fa-map-marker-alt"></i> Terminal Road, Jhenaidah</p>
+                            <p><i class="fas fa-phone"></i> +880 1234 567890</p>
+                            <p><i class="fas fa-bus"></i> Inter-city & Local Buses</p>
+                            <p><i class="fas fa-clock"></i> 5:00 AM - 10:00 PM</p>
+                        </div>
+                        <a href="#" class="btn">View Location</a>
+                    </div>
+                </div>
+                
+                <!-- Train Service -->
+                <div class="facility-card">
+                    <div class="facility-img">
+                        <img src="https://via.placeholder.com/600x400" alt="Jhenaidah Railway Station">
+                    </div>
+                    <div class="facility-content">
+                        <h3>Jhenaidah Railway Station</h3>
+                        <div class="facility-info">
+                            <p><i class="fas fa-map-marker-alt"></i> Station Road, Jhenaidah</p>
+                            <p><i class="fas fa-phone"></i> +880 9876 543210</p>
+                            <p><i class="fas fa-train"></i> Daily Trains to Dhaka, Khulna</p>
+                            <p><i class="fas fa-clock"></i> 24/7</p>
+                        </div>
+                        <a href="#" class="btn">View Location</a>
+                    </div>
+                </div>
+                
+                <!-- CNG Stand -->
+                <div class="facility-card">
+                    <div class="facility-img">
+                        <img src="https://via.placeholder.com/600x400" alt="City CNG Stand">
+                    </div>
+                    <div class="facility-content">
+                        <h3>City CNG Stand</h3>
+                        <div class="facility-info">
+                            <p><i class="fas fa-map-marker-alt"></i> Kaliganj Road, Jhenaidah</p>
+                            <p><i class="fas fa-phone"></i> +880 1122 334455</p>
+                            <p><i class="fas fa-taxi"></i> Available 24/7</p>
+                            <p><i class="fas fa-money-bill-wave"></i> Metered Fare</p>
+                        </div>
+                        <a href="#" class="btn">View Location</a>
+                    </div>
+                </div>
+                
+                <!-- Bike Rental -->
+                <div class="facility-card">
+                    <div class="facility-img">
+                        <img src="https://via.placeholder.com/600x400" alt="Jhenaidah Bike Rental">
+                    </div>
+                    <div class="facility-content">
+                        <h3>Jhenaidah Bike Rental</h3>
+                        <div class="facility-info">
+                            <p><i class="fas fa-map-marker-alt"></i> Kotchandpur Road, Jhenaidah</p>
+                            <p><i class="fas fa-phone"></i> +880 5566 778899</p>
+                            <p><i class="fas fa-bicycle"></i> Motorcycle & Bicycle</p>
+                            <p><i class="fas fa-clock"></i> 8:00 AM - 9:00 PM</p>
+                        </div>
+                        <a href="#" class="btn">View Location</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="route-schedule">
+                <h3>Bus Schedule from Jhenaidah</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Destination</th>
+                            <th>Bus Name</th>
+                            <th>Departure Time</th>
+                            <th>Fare</th>
+                            <th>Duration</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Dhaka</td>
+                            <td>Jhenaidah Express</td>
+                            <td>7:00 AM, 2:00 PM, 10:00 PM</td>
+                            <td>৳500</td>
+                            <td>6 Hours</td>
+                        </tr>
+                        <tr>
+                            <td>Khulna</td>
+                            <td>Sundarban Express</td>
+                            <td>6:00 AM, 12:00 PM, 5:00 PM</td>
+                            <td>৳300</td>
+                            <td>3 Hours</td>
+                        </tr>
+                        <tr>
+                            <td>Kushtia</td>
+                            <td>Local Service</td>
+                            <td>Every 30 Minutes</td>
+                            <td>৳150</td>
+                            <td>1.5 Hours</td>
+                        </tr>
+                        <tr>
+                            <td>Jessore</td>
+                            <td>Shyamoli Paribahan</td>
+                            <td>Every Hour</td>
+                            <td>৳200</td>
+                            <td>2 Hours</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Jhenaidah Hub</h3>
+                    <p>Your one-stop portal for all services and information about Jhenaidah city.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="healthcare.html">Healthcare</a></li>
+                        <li><a href="education.html">Education</a></li>
+                        <li><a href="transportation.html">Transportation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Jhenaidah, Bangladesh</li>
+                        <li><i class="fas fa-phone"></i> +880 XXXX XXXXXX</li>
+                        <li><i class="fas fa-envelope"></i> info@jhenaidahhub.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Jhenaidah Hub. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
