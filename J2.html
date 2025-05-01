@@ -1,167 +1,193 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ঝিনাইদহ সেবা - আপনার স্থানীয় গাইড</title>
+    <title>Jhenaidah Hub - Explore Your City</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --primary-color: #2e7d32;
-            --secondary-color: #81c784;
-            --light-color: #f1f8e9;
-            --dark-color: #1b5e20;
-            --text-color: #333;
-            --white: #ffffff;
-        }
-        
+        /* Global Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        :root {
+            --primary: #2E7D32;
+            --secondary: #1976D2;
+            --light: #f5f5f5;
+            --dark: #333;
         }
         
         body {
-            background-color: var(--light-color);
-            color: var(--text-color);
+            background-color: #f9f9f9;
+            color: var(--dark);
             line-height: 1.6;
         }
         
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
         header {
-            background-color: var(--primary-color);
-            color: var(--white);
-            padding: 1rem;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
         }
         
         .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-        
-        nav {
-            background-color: var(--dark-color);
-            padding: 0.5rem;
-        }
-        
-        nav ul {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-            flex-wrap: wrap;
-        }
-        
-        nav ul li {
-            margin: 0 1rem;
-        }
-        
-        nav ul li a {
-            color: var(--white);
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
             text-decoration: none;
-            padding: 0.5rem;
-            display: block;
-            transition: all 0.3s ease;
         }
         
-        nav ul li a:hover {
-            background-color: var(--secondary-color);
-            border-radius: 4px;
+        .logo span {
+            color: var(--secondary);
         }
         
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+        }
+        
+        /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://example.com/jhenaidah-bg.jpg');
-            background-size: cover;
-            background-position: center;
-            height: 300px;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://via.placeholder.com/1920x1080') no-repeat center center/cover;
+            height: 80vh;
             display: flex;
             align-items: center;
-            justify-content: center;
-            color: var(--white);
             text-align: center;
-            padding: 0 1rem;
+            color: white;
+            margin-top: 70px;
         }
         
-        .hero-content h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
         
-        .search-bar {
-            margin-top: 1rem;
-            display: flex;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
         }
         
-        .search-bar input {
-            flex: 1;
-            padding: 0.8rem;
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
             border: none;
-            border-radius: 4px 0 0 4px;
-            font-size: 1rem;
-        }
-        
-        .search-bar button {
-            padding: 0.8rem 1.5rem;
-            background-color: var(--secondary-color);
-            color: var(--white);
-            border: none;
-            border-radius: 0 4px 4px 0;
             cursor: pointer;
-            font-size: 1rem;
-            transition: background-color 0.3s;
         }
         
-        .search-bar button:hover {
-            background-color: var(--primary-color);
+        .btn:hover {
+            background-color: #1B5E20;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
         
-        .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1rem;
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+            margin-left: 15px;
+        }
+        
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 80px 0;
         }
         
         .section-title {
             text-align: center;
-            margin-bottom: 2rem;
-            color: var(--dark-color);
-            position: relative;
+            margin-bottom: 50px;
         }
         
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 3px;
-            background-color: var(--secondary-color);
-            margin: 0.5rem auto;
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--primary);
+            margin-bottom: 15px;
         }
         
-        .services {
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
         
         .service-card {
-            background-color: var(--white);
-            border-radius: 8px;
+            background-color: white;
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
         
         .service-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
         
         .service-img {
-            height: 180px;
+            height: 200px;
             overflow: hidden;
         }
         
@@ -173,121 +199,91 @@
         }
         
         .service-card:hover .service-img img {
-            transform: scale(1.05);
+            transform: scale(1.1);
         }
         
         .service-content {
-            padding: 1.5rem;
+            padding: 25px;
         }
         
         .service-content h3 {
-            margin-bottom: 0.5rem;
-            color: var(--dark-color);
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--dark);
         }
         
         .service-content p {
-            margin-bottom: 1rem;
             color: #666;
+            margin-bottom: 20px;
         }
         
-        .btn {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: var(--white);
-            padding: 0.6rem 1.2rem;
-            border-radius: 4px;
-            text-decoration: none;
-            transition: background-color 0.3s;
+        .service-icon {
+            font-size: 40px;
+            color: var(--primary);
+            margin-bottom: 20px;
         }
         
-        .btn:hover {
-            background-color: var(--dark-color);
+        /* Highlights Section */
+        .highlights {
+            padding: 80px 0;
+            background-color: var(--light);
         }
         
-        .categories {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 3rem;
-        }
-        
-        .category-btn {
-            padding: 0.8rem 1.5rem;
-            background-color: var(--white);
-            border: 1px solid var(--secondary-color);
-            border-radius: 30px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .category-btn:hover, .category-btn.active {
-            background-color: var(--secondary-color);
-            color: var(--white);
-        }
-        
-        .about {
-            background-color: var(--white);
-            padding: 3rem 2rem;
-            border-radius: 8px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            margin-bottom: 3rem;
-        }
-        
-        .testimonials {
+        .highlights-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
         }
         
-        .testimonial-card {
-            background-color: var(--white);
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-        }
-        
-        .testimonial-card .quote {
-            font-style: italic;
-            margin-bottom: 1rem;
-        }
-        
-        .testimonial-card .author {
-            font-weight: bold;
-            color: var(--dark-color);
-        }
-        
-        footer {
-            background-color: var(--dark-color);
-            color: var(--white);
-            padding: 3rem 1rem;
+        .highlight-card {
             text-align: center;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .highlight-icon {
+            font-size: 50px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .highlight-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
         }
         
         .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            text-align: left;
+            gap: 40px;
+            margin-bottom: 40px;
         }
         
         .footer-column h3 {
-            margin-bottom: 1.5rem;
+            font-size: 20px;
+            margin-bottom: 25px;
             position: relative;
-            padding-bottom: 0.5rem;
+            padding-bottom: 10px;
         }
         
         .footer-column h3::after {
             content: '';
-            display: block;
+            position: absolute;
+            left: 0;
+            bottom: 0;
             width: 50px;
             height: 2px;
-            background-color: var(--secondary-color);
-            position: absolute;
-            bottom: 0;
+            background-color: var(--primary);
         }
         
         .footer-column ul {
@@ -295,399 +291,365 @@
         }
         
         .footer-column ul li {
-            margin-bottom: 0.8rem;
+            margin-bottom: 15px;
         }
         
         .footer-column ul li a {
-            color: var(--light-color);
+            color: #bbb;
             text-decoration: none;
             transition: color 0.3s;
         }
         
         .footer-column ul li a:hover {
-            color: var(--secondary-color);
+            color: white;
         }
         
         .social-links {
             display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
+            gap: 15px;
         }
         
         .social-links a {
-            color: var(--white);
-            background-color: rgba(255,255,255,0.1);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
             transition: all 0.3s;
         }
         
         .social-links a:hover {
-            background-color: var(--secondary-color);
+            background-color: var(--primary);
             transform: translateY(-3px);
         }
         
         .copyright {
-            margin-top: 2rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        /* Eco-friendly features */
-        .eco-badge {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: var(--primary-color);
-            color: white;
-            padding: 10px 15px;
-            border-radius: 50px;
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bbb;
             font-size: 14px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-            z-index: 100;
-            display: flex;
-            align-items: center;
         }
         
-        .eco-badge i {
-            margin-right: 8px;
-        }
-        
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 2rem;
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 40px;
             }
             
-            nav ul {
+            .hero p {
+                font-size: 18px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: white;
                 flex-direction: column;
                 align-items: center;
+                padding: 40px 0;
+                transition: left 0.3s;
             }
             
-            nav ul li {
-                margin: 0.3rem 0;
+            .nav-links.active {
+                left: 0;
             }
             
-            .search-bar {
-                flex-direction: column;
+            .nav-links li {
+                margin: 15px 0;
             }
             
-            .search-bar input {
-                border-radius: 4px;
-                margin-bottom: 0.5rem;
+            .hero {
+                height: 70vh;
+                margin-top: 60px;
             }
             
-            .search-bar button {
-                border-radius: 4px;
-                width: 100%;
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .btn {
+                padding: 10px 25px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                height: 60vh;
+            }
+            
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            .section-title h2 {
+                font-size: 30px;
+            }
+            
+            .service-card {
+                max-width: 350px;
+                margin: 0 auto;
             }
         }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
+    <!-- Header Section -->
     <header>
-        <div class="logo">ঝিনাইদহ সেবা</div>
-        <p>আপনার স্থানীয় সেবা নির্দেশিকা</p>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">Jhenaidah<span>Hub</span></a>
+                <ul class="nav-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
     </header>
-    
-    <nav>
-        <ul>
-            <li><a href="#home">হোম</a></li>
-            <li><a href="#services">সেবাসমূহ</a></li>
-            <li><a href="#doctors">ডাক্তার</a></li>
-            <li><a href="#shops">দোকান-পাট</a></li>
-            <li><a href="#about">আমাদের সম্পর্কে</a></li>
-            <li><a href="#contact">যোগাযোগ</a></li>
-        </ul>
-    </nav>
-    
-    <section class="hero" id="home">
+
+    <!-- Hero Section -->
+    <section class="hero">
         <div class="hero-content">
-            <h1>ঝিনাইদহের সেরা সেবাগুলো একত্রে</h1>
-            <p>আপনার প্রয়োজনীয় সকল স্থানীয় সেবা খুঁজে নিন সহজেই</p>
-            
-            <div class="search-bar">
-                <input type="text" placeholder="আপনি কী খুঁজছেন? (ডাক্তার, দোকান, সেবা...)">
-                <button type="submit"><i class="fas fa-search"></i> খুঁজুন</button>
+            <h1>Discover Jhenaidah</h1>
+            <p>Explore all services, attractions and facilities of your city in one place</p>
+            <a href="#services" class="btn">Browse Services</a>
+            <a href="#" class="btn btn-outline">Learn More</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>Find all essential services available in Jhenaidah city</p>
+            </div>
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://via.placeholder.com/400x300" alt="Healthcare">
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-hospital"></i>
+                        </div>
+                        <h3>Healthcare</h3>
+                        <p>Find hospitals, clinics and emergency services in Jhenaidah.</p>
+                        <a href="healthcare.html" class="btn">View Details</a>
+                    </div>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://via.placeholder.com/400x300" alt="Education">
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-school"></i>
+                        </div>
+                        <h3>Education</h3>
+                        <p>Schools, colleges and educational institutions in Jhenaidah.</p>
+                        <a href="education.html" class="btn">View Details</a>
+                    </div>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://via.placeholder.com/400x300" alt="Transportation">
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-bus"></i>
+                        </div>
+                        <h3>Transportation</h3>
+                        <p>Bus routes, train schedules and transport services.</p>
+                        <a href="transportation.html" class="btn">View Details</a>
+                    </div>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://via.placeholder.com/400x300" alt="Shopping">
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <h3>Shopping</h3>
+                        <p>Markets, malls and shopping centers in Jhenaidah.</p>
+                        <a href="shopping.html" class="btn">View Details</a>
+                    </div>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://via.placeholder.com/400x300" alt="Tourism">
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-umbrella-beach"></i>
+                        </div>
+                        <h3>Tourism</h3>
+                        <p>Historical places and tourist attractions in Jhenaidah.</p>
+                        <a href="tourism.html" class="btn">View Details</a>
+                    </div>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://via.placeholder.com/400x300" alt="Utilities">
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3>Utilities</h3>
+                        <p>Bill payments, gas services and other utilities.</p>
+                        <a href="utilities.html" class="btn">View Details</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
-    
-    <div class="container">
-        <section id="services">
-            <h2 class="section-title">জনপ্রিয় সেবাসমূহ</h2>
-            
-            <div class="categories">
-                <button class="category-btn active">সব</button>
-                <button class="category-btn">চিকিৎসা</button>
-                <button class="category-btn">খাদ্য</button>
-                <button class="category-btn">শিক্ষা</button>
-                <button class="category-btn">পরিবহন</button>
-                <button class="category-btn">অন্যান্য</button>
+
+    <!-- Highlights Section -->
+    <section class="highlights">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Jhenaidah?</h2>
+                <p>Discover what makes our city special</p>
             </div>
-            
-            <div class="services">
-                <div class="service-card">
-                    <div class="service-img">
-                        <img src="https://via.placeholder.com/400x300?text=Doctor+Service" alt="ডাক্তার সেবা">
+            <div class="highlights-grid">
+                <div class="highlight-card">
+                    <div class="highlight-icon">
+                        <i class="fas fa-landmark"></i>
                     </div>
-                    <div class="service-content">
-                        <h3>জেনারেল ফিজিশিয়ান</h3>
-                        <p>ঝিনাইদহ সদর হাসপাতালের অভিজ্ঞ ডাক্তারদের তালিকা</p>
-                        <a href="#" class="btn">বিস্তারিত দেখুন</a>
-                    </div>
+                    <h3>Rich Culture</h3>
+                    <p>Jhenaidah has a vibrant cultural heritage with historical landmarks and traditions.</p>
                 </div>
-                
-                <div class="service-card">
-                    <div class="service-img">
-                        <img src="https://via.placeholder.com/400x300?text=Pharmacy" alt="ফার্মেসি">
+                <div class="highlight-card">
+                    <div class="highlight-icon">
+                        <i class="fas fa-tree"></i>
                     </div>
-                    <div class="service-content">
-                        <h3>স্থানীয় ফার্মেসি</h3>
-                        <p>ঝিনাইদহের ২৪ ঘণ্টা খোলা ফার্মেসি ও ওষুধের দোকান</p>
-                        <a href="#" class="btn">বিস্তারিত দেখুন</a>
-                    </div>
+                    <h3>Natural Beauty</h3>
+                    <p>Surrounded by beautiful landscapes, rivers and greenery.</p>
                 </div>
-                
-                <div class="service-card">
-                    <div class="service-img">
-                        <img src="https://via.placeholder.com/400x300?text=Grocery" alt="কাচারী পণ্য">
+                <div class="highlight-card">
+                    <div class="highlight-icon">
+                        <i class="fas fa-chart-line"></i>
                     </div>
-                    <div class="service-content">
-                        <h3>কাচারী পণ্যের দোকান</h3>
-                        <p>স্থানীয় তাজা শাকসবজি ও দৈনন্দিন পণ্যের দোকান</p>
-                        <a href="#" class="btn">বিস্তারিত দেখুন</a>
-                    </div>
+                    <h3>Growing Economy</h3>
+                    <p>Rapid development in infrastructure and local businesses.</p>
                 </div>
-                
-                <div class="service-card">
-                    <div class="service-img">
-                        <img src="https://via.placeholder.com/400x300?text=Electrician" alt="ইলেকট্রিশিয়ান">
-                    </div>
-                    <div class="service-content">
-                        <h3>ইলেকট্রিশিয়ান সেবা</h3>
-                        <p>ঝিনাইদহের নির্ভরযোগ্য ইলেকট্রিশিয়ানদের পরিচিতি</p>
-                        <a href="#" class="btn">বিস্তারিত দেখুন</a>
-                    </div>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-img">
-                        <img src="https://via.placeholder.com/400x300?text=School" alt="শিক্ষা প্রতিষ্ঠান">
-                    </div>
-                    <div class="service-content">
-                        <h3>শিক্ষা প্রতিষ্ঠান</h3>
-                        <p>ঝিনাইদহের সেরা স্কুল ও কলেজের তালিকা</p>
-                        <a href="#" class="btn">বিস্তারিত দেখুন</a>
-                    </div>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-img">
-                        <img src="https://via.placeholder.com/400x300?text=Transport" alt="পরিবহন সেবা">
-                    </div>
-                    <div class="service-content">
-                        <h3>স্থানীয় পরিবহন</h3>
-                        <p>ঝিনাইদহের বাস, অটো ও অন্যান্য পরিবহন সেবা</p>
-                        <a href="#" class="btn">বিস্তারিত দেখুন</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section id="doctors">
-            <h2 class="section-title">ঝিনাইদহের ডাক্তারবৃন্দ</h2>
-            
-            <div class="services">
-                <div class="service-card">
-                    <div class="service-img">
-                        <img src="https://via.placeholder.com/400x300?text=Cardiologist" alt="কার্ডিওলজিস্ট">
-                    </div>
-                    <div class="service-content">
-                        <h3>ডা. আহমেদ হোসেন</h3>
-                        <p>কার্ডিওলজিস্ট, ঝিনাইদহ মেডিকেল কলেজ</p>
-                        <p><i class="fas fa-phone"></i> ০১৭১২৩৪৫৬৭৮</p>
-                        <a href="#" class="btn">এপয়েন্টমেন্ট</a>
-                    </div>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-img">
-                        <img src="https://via.placeholder.com/400x300?text=Pediatrician" alt="শিশু বিশেষজ্ঞ">
-                    </div>
-                    <div class="service-content">
-                        <h3>ডা. সুমাইয়া আক্তার</h3>
-                        <p>শিশু বিশেষজ্ঞ, ঝিনাইদহ সদর হাসপাতাল</p>
-                        <p><i class="fas fa-phone"></i> ০১৯৮৭৬৫৪৩২১</p>
-                        <a href="#" class="btn">এপয়েন্টমেন্ট</a>
-                    </div>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-img">
-                        <img src="https://via.placeholder.com/400x300?text=Gynecologist" alt="গাইনোকলজিস্ট">
-                    </div>
-                    <div class="service-content">
-                        <h3>ডা. নাসরিন জাহান</h3>
-                        <p>গাইনোকলজিস্ট, ঝিনাইদহ সদর হাসপাতাল</p>
-                        <p><i class="fas fa-phone"></i> ০১৫২১১১২২৩৩</p>
-                        <a href="#" class="btn">এপয়েন্টমেন্ট</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section id="shops">
-            <h2 class="section-title">ঝিনাইদহের দোকান-পাট</h2>
-            
-            <div class="services">
-                <div class="service-card">
-                    <div class="service-img">
-                        <img src="https://via.placeholder.com/400x300?text=Super+Shop" alt="সুপার শপ">
-                    </div>
-                    <div class="service-content">
-                        <h3>আগামী সুপার শপ</h3>
-                        <p>ঝিনাইদহ সদরের বৃহত্তম সুপার শপ</p>
-                        <p><i class="fas fa-map-marker-alt"></i> সদর রোড, ঝিনাইদহ</p>
-                        <a href="#" class="btn">বিস্তারিত দেখুন</a>
-                    </div>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-img">
-                        <img src="https://via.placeholder.com/400x300?text=Electronics" alt="ইলেকট্রনিক্স দোকান">
-                    </div>
-                    <div class="service-content">
-                        <h3>টেক ভিশন</h3>
-                        <p>ইলেকট্রনিক্স ও গ্যাজেটের দোকান</p>
-                        <p><i class="fas fa-map-marker-alt"></i> কোর্ট রোড, ঝিনাইদহ</p>
-                        <a href="#" class="btn">বিস্তারিত দেখুন</a>
-                    </div>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-img">
-                        <img src="https://via.placeholder.com/400x300?text=Book+Shop" alt="বইয়ের দোকান">
-                    </div>
-                    <div class="service-content">
-                        <h3>জ্ঞানকোষ বইয়ের দোকান</h3>
-                        <p>সকল ধরনের শিক্ষা সহায়ক বই</p>
-                        <p><i class="fas fa-map-marker-alt"></i> কলেজ রোড, ঝিনাইদহ</p>
-                        <a href="#" class="btn">বিস্তারিত দেখুন</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section class="about" id="about">
-            <h2 class="section-title">আমাদের সম্পর্কে</h2>
-            <p>ঝিনাইদহ সেবা একটি সম্পূর্ণ স্থানীয় উদ্যোগ যার লক্ষ্য ঝিনাইদহবাসীর দৈনন্দিন প্রয়োজনীয় সেবাগুলোকে সহজলভ্য করা। আমরা আমাদের ওয়েবসাইটের মাধ্যমে ঝিনাইদহের সকল প্রয়োজনীয় সেবা যেমন চিকিৎসা, শিক্ষা, বাজারজাত পণ্য, পরিবহন এবং অন্যান্য সেবাগুলোকে একই প্ল্যাটফর্মে উপস্থাপন করছি।</p>
-            <p>আমাদের টিম স্থানীয় তরুণদের নিয়ে গঠিত যারা ঝিনাইদহের উন্নয়নে কাজ করতে আগ্রহী। আমরা বিশ্বাস করি প্রযুক্তির সঠিক ব্যবহারের মাধ্যমে আমরা আমাদের সমাজের জীবনযাত্রার মান উন্নয়ন করতে পারি।</p>
-        </section>
-        
-        <section id="testimonials">
-            <h2 class="section-title">ব্যবহারকারীদের মতামত</h2>
-            
-            <div class="testimonials">
-                <div class="testimonial-card">
-                    <p class="quote">"ঝিনাইদহ সেবা ওয়েবসাইটের মাধ্যমে আমি খুব সহজেই আমার এলাকার একজন ভালো ডাক্তার খুঁজে পেয়েছি। ধন্যবাদ এমন একটি উদ্যোগ নেওয়ার জন্য।"</p>
-                    <p class="author">- রহিমা আক্তার, ঝিনাইদহ সদর</p>
-                </div>
-                
-                <div class="testimonial-card">
-                    <p class="quote">"আমি আমার নতুন দোকানের প্রচারের জন্য এই প্ল্যাটফর্ম ব্যবহার করেছি এবং খুব ভালো সাড়া পেয়েছি। স্থানীয় ব্যবসায়ীদের জন্য এটি একটি দুর্দান্ত সুযোগ।"</p>
-                    <p class="author">- করিম উদ্দিন, ব্যবসায়ী</p>
-                </div>
-                
-                <div class="testimonial-card">
-                    <p class="quote">"ঝিনাইদহে নতুন এসেছি, এই ওয়েবসাইটটি আমাকে এলাকার প্রয়োজনীয় সব সেবা সম্পর্কে জানতে সাহায্য করেছে। ব্যবহারেও খুব সহজ।"</p>
-                    <p class="author">- সুমন সরকার, নতুন বাসিন্দা</p>
-                </div>
-            </div>
-        </section>
-    </div>
-    
-    <footer id="contact">
-        <div class="footer-content">
-            <div class="footer-column">
-                <h3>ঝিনাইদহ সেবা</h3>
-                <p>আপনার স্থানীয় সেবা নির্দেশিকা। ঝিনাইদহের সকল প্রয়োজনীয় সেবা একত্রে।</p>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
-            
-            <div class="footer-column">
-                <h3>দ্রুত লিংক</h3>
-                <ul>
-                    <li><a href="#home">হোম</a></li>
-                    <li><a href="#services">সেবাসমূহ</a></li>
-                    <li><a href="#doctors">ডাক্তার</a></li>
-                    <li><a href="#shops">দোকান-পাট</a></li>
-                    <li><a href="#about">আমাদের সম্পর্কে</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-column">
-                <h3>যোগাযোগ</h3>
-                <ul>
-                    <li><i class="fas fa-map-marker-alt"></i> ১২৩ কলেজ রোড, ঝিনাইদহ</li>
-                    <li><i class="fas fa-phone"></i> ০১৭১১১১২২৩৩</li>
-                    <li><i class="fas fa-envelope"></i> info@jhenaidahseba.com</li>
-                </ul>
             </div>
         </div>
-        
-        <div class="copyright">
-            <p>&copy; ২০২৩ ঝিনাইদহ সেবা | সকল অধিকার সংরক্ষিত</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Jhenaidah Hub</h3>
+                    <p>Your one-stop portal for all services and information about Jhenaidah city.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#">About Jhenaidah</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="healthcare.html">Healthcare</a></li>
+                        <li><a href="education.html">Education</a></li>
+                        <li><a href="transportation.html">Transportation</a></li>
+                        <li><a href="tourism.html">Tourism</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Jhenaidah, Bangladesh</li>
+                        <li><i class="fas fa-phone"></i> +880 XXXX XXXXXX</li>
+                        <li><i class="fas fa-envelope"></i> info@jhenaidahhub.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Jhenaidah Hub. All Rights Reserved.</p>
+            </div>
         </div>
     </footer>
-    
-    <div class="eco-badge">
-        <i class="fas fa-leaf"></i> ইকো-ফ্রেন্ডলি ওয়েবসাইট
-    </div>
 
     <script>
-        // Simple JavaScript for category filtering
-        document.addEventListener('DOMContentLoaded', function() {
-            const categoryBtns = document.querySelectorAll('.category-btn');
-            
-            categoryBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    // Remove active class from all buttons
-                    categoryBtns.forEach(b => b.classList.remove('active'));
-                    // Add active class to clicked button
-                    this.classList.add('active');
-                    
-                    // Here you would typically filter the services
-                    // For now we'll just log the category
-                    console.log('Selected category:', this.textContent);
-                });
+        // Mobile Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
             });
-            
-            // Smooth scrolling for navigation links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 70,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
             });
         });
     </script>
