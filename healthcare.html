@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthcare Services in Jhenaidah | Jhenaidah Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reuse the same CSS from index.html */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        :root {
+            --primary: #2E7D32;
+            --secondary: #1976D2;
+            --light: #f5f5f5;
+            --dark: #333;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://via.placeholder.com/1920x600') no-repeat center center/cover;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin-top: 70px;
+        }
+        
+        .page-header h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        .breadcrumb li {
+            margin: 0 10px;
+        }
+        
+        .breadcrumb li a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .breadcrumb li::after {
+            content: '/';
+            margin-left: 10px;
+            color: #ccc;
+        }
+        
+        .breadcrumb li:last-child::after {
+            content: '';
+        }
+        
+        /* Service Details */
+        .service-details {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .facilities-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .facility-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .facility-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .facility-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .facility-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .facility-content {
+            padding: 25px;
+        }
+        
+        .facility-content h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .facility-info {
+            margin-bottom: 20px;
+        }
+        
+        .facility-info p {
+            margin-bottom: 10px;
+            color: #666;
+        }
+        
+        .facility-info i {
+            color: var(--primary);
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #1B5E20;
+        }
+        
+        .emergency-section {
+            background-color: #FFEBEE;
+            padding: 40px;
+            border-radius: 10px;
+            margin-top: 50px;
+            text-align: center;
+        }
+        
+        .emergency-section h3 {
+            color: #C62828;
+            margin-bottom: 20px;
+        }
+        
+        .emergency-numbers {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .emergency-number {
+            background-color: white;
+            padding: 15px 25px;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .emergency-number h4 {
+            color: #C62828;
+            margin-bottom: 5px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bbb;
+            font-size: 14px;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 40px 0;
+                transition: left 0.3s;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .page-header {
+                margin-top: 60px;
+                height: 250px;
+            }
+            
+            .page-header h1 {
+                font-size: 32px;
+            }
+            
+            .facilities-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">Jhenaidah<span>Hub</span></a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="healthcare.html" class="active">Healthcare</a></li>
+                    <li><a href="education.html">Education</a></li>
+                    <li><a href="transportation.html">Transportation</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div>
+                <h1>Healthcare Services</h1>
+                <ul class="breadcrumb">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">Healthcare</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Details -->
+    <section class="service-details">
+        <div class="container">
+            <div class="section-title">
+                <h2>Medical Facilities in Jhenaidah</h2>
+                <p>Find hospitals, clinics and emergency services available in Jhenaidah</p>
+            </div>
+            
+            <div class="facilities-list">
+                <!-- Hospital 1 -->
+                <div class="facility-card">
+                    <div class="facility-img">
+                        <img src="https://via.placeholder.com/600x400" alt="Jhenaidah General Hospital">
+                    </div>
+                    <div class="facility-content">
+                        <h3>Jhenaidah General Hospital</h3>
+                        <div class="facility-info">
+                            <p><i class="fas fa-map-marker-alt"></i> Hospital Road, Jhenaidah</p>
+                            <p><i class="fas fa-phone"></i> +880 1234 567890</p>
+                            <p><i class="fas fa-clock"></i> 24/7 Emergency Service</p>
+                            <p><i class="fas fa-stethoscope"></i> All major specialties available</p>
+                        </div>
+                        <a href="#" class="btn">View Location</a>
+                    </div>
+                </div>
+                
+                <!-- Hospital 2 -->
+                <div class="facility-card">
+                    <div class="facility-img">
+                        <img src="https://via.placeholder.com/600x400" alt="City Medical College">
+                    </div>
+                    <div class="facility-content">
+                        <h3>City Medical College</h3>
+                        <div class="facility-info">
+                            <p><i class="fas fa-map-marker-alt"></i> College Road, Jhenaidah</p>
+                            <p><i class="fas fa-phone"></i> +880 9876 543210</p>
+                            <p><i class="fas fa-clock"></i> 8:00 AM - 10:00 PM</p>
+                            <p><i class="fas fa-stethoscope"></i> Cardiology, Neurology, Surgery</p>
+                        </div>
+                        <a href="#" class="btn">View Location</a>
+                    </div>
+                </div>
+                
+                <!-- Clinic 1 -->
+                <div class="facility-card">
+                    <div class="facility-img">
+                        <img src="https://via.placeholder.com/600x400" alt="Jhenaidah Diabetic Center">
+                    </div>
+                    <div class="facility-content">
+                        <h3>Jhenaidah Diabetic Center</h3>
+                        <div class="facility-info">
+                            <p><i class="fas fa-map-marker-alt"></i> Kaliganj Road, Jhenaidah</p>
+                            <p><i class="fas fa-phone"></i> +880 1122 334455</p>
+                            <p><i class="fas fa-clock"></i> 9:00 AM - 5:00 PM</p>
+                            <p><i class="fas fa-stethoscope"></i> Specialized in Diabetes Care</p>
+                        </div>
+                        <a href="#" class="btn">View Location</a>
+                    </div>
+                </div>
+                
+                <!-- Clinic 2 -->
+                <div class="facility-card">
+                    <div class="facility-img">
+                        <img src="https://via.placeholder.com/600x400" alt="Mother & Child Hospital">
+                    </div>
+                    <div class="facility-content">
+                        <h3>Mother & Child Hospital</h3>
+                        <div class="facility-info">
+                            <p><i class="fas fa-map-marker-alt"></i> Kotchandpur Road, Jhenaidah</p>
+                            <p><i class="fas fa-phone"></i> +880 5566 778899</p>
+                            <p><i class="fas fa-clock"></i> 24/7 Delivery Service</p>
+                            <p><i class="fas fa-stethoscope"></i> Gynecology & Pediatrics</p>
+                        </div>
+                        <a href="#" class="btn">View Location</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="emergency-section">
+                <h3>Emergency Contacts</h3>
+                <div class="emergency-numbers">
+                    <div class="emergency-number">
+                        <h4>Ambulance</h4>
+                        <p>+880 1999 123456</p>
+                    </div>
+                    <div class="emergency-number">
+                        <h4>Police Help</h4>
+                        <p>+880 1999 654321</p>
+                    </div>
+                    <div class="emergency-number">
+                        <h4>Fire Service</h4>
+                        <p>+880 1999 112233</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Jhenaidah Hub</h3>
+                    <p>Your one-stop portal for all services and information about Jhenaidah city.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="healthcare.html">Healthcare</a></li>
+                        <li><a href="education.html">Education</a></li>
+                        <li><a href="transportation.html">Transportation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Jhenaidah, Bangladesh</li>
+                        <li><i class="fas fa-phone"></i> +880 XXXX XXXXXX</li>
+                        <li><i class="fas fa-envelope"></i> info@jhenaidahhub.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Jhenaidah Hub. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
