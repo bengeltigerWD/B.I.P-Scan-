@@ -5,16 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jhenaidah Hub - Explore Your City</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Modern CSS Reset */
+        /* Modern CSS Reset with New Color Palette */
         :root {
-            --primary: #2E7D32;
-            --secondary: #1976D2;
-            --accent: #FF9800;
+            --primary: #4361ee;  /* Vibrant blue */
+            --secondary: #3a0ca3; /* Deep purple */
+            --accent: #f72585;    /* Pink accent */
             --light: #f8f9fa;
             --dark: #212529;
             --gray: #6c757d;
+            --light-blue: #4cc9f0; /* Light blue for highlights */
             --transition: all 0.3s ease;
+            --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
         }
         
         * {
@@ -31,7 +34,7 @@
             overflow-x: hidden;
         }
         
-        /* Preloader for fast perception */
+        /* Preloader with new colors */
         #preloader {
             position: fixed;
             top: 0;
@@ -51,12 +54,12 @@
         }
         
         @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
+            0% { transform: scale(1); opacity: 0.6; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.6; }
         }
         
-        /* Header with Logo */
+        /* Header with new gradient */
         header {
             background-color: white;
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
@@ -87,11 +90,10 @@
         .logo-text {
             font-size: 24px;
             font-weight: 700;
-            color: var(--primary);
-        }
-        
-        .logo-text span {
-            color: var(--secondary);
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
         
         .nav-links {
@@ -115,6 +117,7 @@
         
         .nav-links a i {
             margin-right: 8px;
+            color: var(--primary);
         }
         
         .nav-links a:hover {
@@ -133,7 +136,7 @@
             left: 0;
             width: 100%;
             height: 3px;
-            background-color: var(--primary);
+            background: var(--gradient);
             border-radius: 3px;
         }
         
@@ -141,17 +144,31 @@
             display: none;
             cursor: pointer;
             font-size: 24px;
+            color: var(--primary);
         }
         
-        /* Hero Section */
+        /* Hero Section with Gradient Overlay */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1580652611975-afc3b85a70ed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            background: linear-gradient(rgba(67, 97, 238, 0.8), rgba(58, 12, 163, 0.8)), 
+                        url('https://images.unsplash.com/photo-1580652611975-afc3b85a70ed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
             height: 90vh;
             display: flex;
             align-items: center;
             text-align: center;
             color: white;
             margin-top: 70px;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to top, var(--light), transparent);
+            z-index: 1;
         }
         
         .hero-content {
@@ -159,6 +176,8 @@
             margin: 0 auto;
             padding: 0 20px;
             animation: fadeInUp 1s ease;
+            position: relative;
+            z-index: 2;
         }
         
         @keyframes fadeInUp {
@@ -176,6 +195,7 @@
             font-size: 3.5rem;
             margin-bottom: 20px;
             line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
         
         .hero p {
@@ -186,7 +206,7 @@
         
         .btn {
             display: inline-block;
-            background-color: var(--primary);
+            background: var(--gradient);
             color: white;
             padding: 12px 30px;
             border-radius: 50px;
@@ -196,28 +216,31 @@
             border: none;
             cursor: pointer;
             font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
         }
         
         .btn:hover {
-            background-color: #1B5E20;
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 20px rgba(67, 97, 238, 0.4);
         }
         
         .btn-outline {
             background-color: transparent;
             border: 2px solid white;
             margin-left: 15px;
+            box-shadow: none;
         }
         
         .btn-outline:hover {
             background-color: white;
             color: var(--primary);
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
         }
         
-        /* Services Section */
+        /* Services Section with Card Hover Effects */
         .services {
             padding: 80px 0;
+            background-color: var(--light);
         }
         
         .section-title {
@@ -227,7 +250,10 @@
         
         .section-title h2 {
             font-size: 2.5rem;
-            color: var(--primary);
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
             margin-bottom: 15px;
             position: relative;
             display: inline-block;
@@ -241,7 +267,7 @@
             transform: translateX(-50%);
             width: 80px;
             height: 3px;
-            background-color: var(--secondary);
+            background: var(--gradient);
         }
         
         .section-title p {
@@ -264,11 +290,13 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             transition: var(--transition);
             position: relative;
+            border: 1px solid rgba(67, 97, 238, 0.1);
         }
         
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 15px 30px rgba(67, 97, 238, 0.1);
+            border-color: rgba(67, 97, 238, 0.2);
         }
         
         .service-img {
@@ -305,14 +333,29 @@
         
         .service-icon {
             font-size: 2.5rem;
-            color: var(--primary);
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
             margin-bottom: 20px;
         }
         
-        /* Highlights Section */
+        /* Highlights Section with New Design */
         .highlights {
             padding: 80px 0;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background: linear-gradient(135deg, #f5f7fa 0%, #e2e8f0 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .highlights::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: var(--gradient);
         }
         
         .highlights-grid {
@@ -329,22 +372,39 @@
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .highlight-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient);
         }
         
         .highlight-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 25px rgba(67, 97, 238, 0.1);
         }
         
         .highlight-icon {
             font-size: 3rem;
-            color: var(--primary);
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
             margin-bottom: 20px;
         }
         
         .highlight-card h3 {
             font-size: 1.5rem;
             margin-bottom: 15px;
+            color: var(--secondary);
         }
         
         .highlight-card p {
@@ -352,11 +412,22 @@
             font-size: 0.95rem;
         }
         
-        /* Quick Links Section */
+        /* Quick Links Section with New Gradient */
         .quick-links {
             padding: 60px 0;
-            background-color: var(--primary);
+            background: var(--gradient);
             color: white;
+            position: relative;
+        }
+        
+        .quick-links::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(to right, var(--accent), var(--light-blue));
         }
         
         .quick-links .section-title h2 {
@@ -383,11 +454,14 @@
             padding: 25px;
             border-radius: 10px;
             transition: var(--transition);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         .link-card:hover {
             background-color: rgba(255, 255, 255, 0.2);
             transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
         
         .link-card h3 {
@@ -399,6 +473,7 @@
         
         .link-card h3 i {
             margin-right: 10px;
+            color: var(--light-blue);
         }
         
         .link-card ul {
@@ -422,11 +497,22 @@
             padding-left: 5px;
         }
         
-        /* Footer */
+        /* Footer with New Design */
         footer {
             background-color: var(--dark);
             color: white;
             padding: 60px 0 20px;
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: var(--gradient);
         }
         
         .footer-content {
@@ -441,6 +527,7 @@
             margin-bottom: 25px;
             position: relative;
             padding-bottom: 10px;
+            color: white;
         }
         
         .footer-column h3::after {
@@ -450,7 +537,7 @@
             bottom: 0;
             width: 50px;
             height: 2px;
-            background-color: var(--primary);
+            background: var(--gradient);
         }
         
         .footer-column p {
@@ -475,13 +562,14 @@
         
         .footer-column ul li a:hover {
             color: white;
+            padding-left: 5px;
         }
         
         .footer-column ul li i {
             margin-right: 10px;
             width: 20px;
             text-align: center;
-            color: var(--primary);
+            color: var(--light-blue);
         }
         
         .social-links {
@@ -503,7 +591,7 @@
         }
         
         .social-links a:hover {
-            background-color: var(--primary);
+            background: var(--gradient);
             transform: translateY(-3px);
         }
         
@@ -522,7 +610,7 @@
             right: 30px;
             width: 50px;
             height: 50px;
-            background-color: var(--primary);
+            background: var(--gradient);
             color: white;
             border-radius: 50%;
             display: flex;
@@ -534,6 +622,7 @@
             visibility: hidden;
             transition: var(--transition);
             z-index: 999;
+            box-shadow: 0 2px 10px rgba(67, 97, 238, 0.3);
         }
         
         .back-to-top.active {
@@ -542,8 +631,8 @@
         }
         
         .back-to-top:hover {
-            background-color: var(--secondary);
             transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.4);
         }
         
         /* Responsive Styles */
@@ -662,7 +751,7 @@
             <nav class="navbar">
                 <div class="logo-container">
                     <img src="jhenaidahhub.png" alt="Jhenaidah Hub Logo" class="logo-img">
-                    <div class="logo-text">Jhenaidah<span>Hub</span></div>
+                    <div class="logo-text">JhenaidahHub</div>
                 </div>
                 <ul class="nav-links">
                     <li class="active"><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
@@ -683,11 +772,11 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1>Welcome to Jhenaidah Hub</h1>
-            <p>Your complete guide to all services and facilities in Jhenaidah city</p>
+            <h1>Discover Jhenaidah</h1>
+            <p>Your complete guide to all services and facilities in Jhenaidah city. Explore, connect, and experience the best our city has to offer.</p>
             <div class="btn-group">
                 <a href="#services" class="btn">Explore Services</a>
-                <a href="#highlights" class="btn btn-outline">Discover Jhenaidah</a>
+                <a href="#highlights" class="btn btn-outline">Discover More</a>
             </div>
         </div>
     </section>
@@ -891,26 +980,15 @@
                 <div class="footer-column">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="healthcare.html">Healthcare</a></li>
-                        <li><a href="education.html">Education</a></li>
-                        <li><a href="transportation.html">Transportation</a></li>
-                        <li><a href="shopping.html">Shopping</a></li>
-                        <li><a href="tourism.html">Tourism</a></li>
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="healthcare.html"><i class="fas fa-chevron-right"></i> Healthcare</a></li>
+                        <li><a href="education.html"><i class="fas fa-chevron-right"></i> Education</a></li>
+                        <li><a href="transportation.html"><i class="fas fa-chevron-right"></i> Transportation</a></li>
+                        <li><a href="shopping.html"><i class="fas fa-chevron-right"></i> Shopping</a></li>
+                        <li><a href="tourism.html"><i class="fas fa-chevron-right"></i> Tourism</a></li>
                     </ul>
                 </div>
-                <div class="footer-column">
-                    <h3>Services</h3>
-                    <ul>
-                        <li><a href="#">Government Services</a></li>
-                        <li><a href="#">Business Directory</a></li>
-                        <li><a href="#">Job Portal</a></li>
-                        <li><a href="#">Real Estate</a></li>
-                        <li><a href="#">Community Forum</a></li>
-                        <li><a href="#">Weather Updates</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
+          <div class="footer-column">
                     <h3>Contact Us</h3>
                     <ul>
                         <li><i class="fas fa-map-marker-alt"></i> <a href="#">123 City Center, Jhenaidah</a></li>
@@ -1021,3 +1099,4 @@
     </script>
 </body>
 </html>
+           
